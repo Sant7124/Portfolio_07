@@ -261,6 +261,7 @@
   backdrop-filter: blur(20px);
   z-index: 99;
   padding: 2rem 1.5rem;
+  padding-bottom: max(2rem, env(safe-area-inset-bottom));
   display: flex;
   flex-direction: column;
   justify-content: space-between;
