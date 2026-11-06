@@ -1,3 +1,5 @@
+// Project UI Mockups Engine
+// Interactive SVG-driven simulated dark-mode software interfaces
 import React from "react";
 
 // ExplainO Visual Mockup: AI Document Intelligence Scanner
