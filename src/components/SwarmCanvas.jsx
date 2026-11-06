@@ -3,6 +3,7 @@ import React, { useEffect, useRef } from "react";
 export function SwarmCanvas({ isMotionActive }) {
   const canvasRef = useRef(null);
   const mouseRef = useRef({ x: -1000, y: -1000, radius: 140, isHovering: false });
+  const shockwavesRef = useRef([]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -34,20 +35,16 @@ export function SwarmCanvas({ isMotionActive }) {
         this.vy = (Math.random() - 0.5) * 1.2;
         this.baseRadius = Math.random() * 2 + 1;
         this.radius = this.baseRadius;
-        // Accent color (red #e32b3c) or soft white (#f2efeb)
         this.isAccent = Math.random() > 0.65;
         this.color = this.isAccent ? "227, 43, 60" : "242, 239, 235";
         this.alpha = Math.random() * 0.5 + 0.2;
         this.friction = 0.98;
-        this.ease = 0.05;
       }
 
       update() {
-        // Natural wandering drift
         this.x += this.vx;
         this.y += this.vy;
 
-        // Bounce gently at screen edges
         if (this.x < 0 || this.x > width) this.vx *= -1;
         if (this.y < 0 || this.y > height) this.vy *= -1;
 
@@ -59,7 +56,6 @@ export function SwarmCanvas({ isMotionActive }) {
         if (dist < mouseRef.current.radius && mouseRef.current.isHovering) {
           const force = (mouseRef.current.radius - dist) / mouseRef.current.radius;
           const angle = Math.atan2(dy, dx);
-          // Swarm vortex around cursor
           this.vx += Math.cos(angle + Math.PI / 2) * force * 0.4;
           this.vy += Math.sin(angle + Math.PI / 2) * force * 0.4;
           this.radius = this.baseRadius * 1.5;
@@ -67,10 +63,23 @@ export function SwarmCanvas({ isMotionActive }) {
           this.radius = this.baseRadius;
         }
 
+        // Apply Shockwave impulses
+        for (let sw of shockwavesRef.current) {
+          const sDx = this.x - sw.x;
+          const sDy = this.y - sw.y;
+          const sDist = Math.hypot(sDx, sDy);
+          const diff = Math.abs(sDist - sw.radius);
+          if (diff < 30) {
+            const push = (1 - diff / 30) * 4;
+            const pushAngle = Math.atan2(sDy, sDx);
+            this.vx += Math.cos(pushAngle) * push;
+            this.vy += Math.sin(pushAngle) * push;
+          }
+        }
+
         this.vx *= this.friction;
         this.vy *= this.friction;
 
-        // Maintain baseline subtle ambient drift
         if (Math.abs(this.vx) < 0.2) this.vx += (Math.random() - 0.5) * 0.3;
         if (Math.abs(this.vy) < 0.2) this.vy += (Math.random() - 0.5) * 0.3;
       }
@@ -98,7 +107,7 @@ export function SwarmCanvas({ isMotionActive }) {
 
     initParticles();
 
-    // Mouse listener
+    // Mouse listeners
     const onMouseMove = (e) => {
       mouseRef.current.x = e.clientX;
       mouseRef.current.y = e.clientY;
@@ -111,14 +120,43 @@ export function SwarmCanvas({ isMotionActive }) {
       mouseRef.current.y = -1000;
     };
 
+    const onMouseClick = (e) => {
+      if (!isMotionActive) return;
+      shockwavesRef.current.push({
+        x: e.clientX,
+        y: e.clientY,
+        radius: 5,
+        maxRadius: 180,
+        opacity: 0.8
+      });
+    };
+
     window.addEventListener("mousemove", onMouseMove);
     document.addEventListener("mouseleave", onMouseLeave);
+    window.addEventListener("click", onMouseClick);
 
     // Animation Loop
     const render = () => {
       ctx.clearRect(0, 0, width, height);
 
       if (isMotionActive) {
+        // Draw Shockwaves
+        for (let i = shockwavesRef.current.length - 1; i >= 0; i--) {
+          const sw = shockwavesRef.current[i];
+          sw.radius += 5;
+          sw.opacity -= 0.02;
+
+          ctx.beginPath();
+          ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
+          ctx.strokeStyle = `rgba(227, 43, 60, ${Math.max(0, sw.opacity * 0.4)})`;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+
+          if (sw.radius >= sw.maxRadius || sw.opacity <= 0) {
+            shockwavesRef.current.splice(i, 1);
+          }
+        }
+
         // Draw inter-particle synapse lines
         for (let i = 0; i < particles.length; i++) {
           particles[i].update();
@@ -141,7 +179,6 @@ export function SwarmCanvas({ isMotionActive }) {
           }
         }
       } else {
-        // Static gentle constellation dots when motion is paused
         for (let i = 0; i < particles.length; i++) {
           particles[i].draw();
         }
@@ -156,6 +193,7 @@ export function SwarmCanvas({ isMotionActive }) {
       window.removeEventListener("resize", handleResize);
       window.removeEventListener("mousemove", onMouseMove);
       document.removeEventListener("mouseleave", onMouseLeave);
+      window.removeEventListener("click", onMouseClick);
       cancelAnimationFrame(animationFrameId);
     };
   }, [isMotionActive]);
@@ -169,4 +207,3 @@ export function SwarmCanvas({ isMotionActive }) {
     />
   );
 }
-
