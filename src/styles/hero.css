@@ -200,6 +200,18 @@
   transform: translateY(-2px);
 }
 
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary:active {
+  transform: translateY(0);
+}
+
+.btn-outline:active {
+  transform: translateY(0);
+}
+
 /* Metrics Strip */
 .hero-metrics {
   display: grid;
