@@ -102,6 +102,14 @@
   border-radius: var(--radius-md);
 }
 
+.about-quick-facts > div {
+  transition: transform var(--transition-fast);
+}
+
+.about-quick-facts > div:hover {
+  transform: translateY(-2px);
+}
+
 .fact-title {
   font-size: 0.72rem;
   font-weight: 700;
