@@ -6,7 +6,7 @@ export function About() {
   const { identity } = siteConfig;
 
   return (
-    <section className="section" id="about">
+    <section className="section" id="about" aria-label="About Santosh Yadav">
       <div className="container">
         {/* Section Header */}
         <div className="section-tag">03 // The Engineer</div>
