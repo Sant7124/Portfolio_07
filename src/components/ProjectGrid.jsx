@@ -73,7 +73,7 @@ export function ProjectGrid() {
         </div>
 
         {/* Projects Grid */}
-        <div className="projects-grid">
+        <div className="projects-grid" aria-live="polite">
           {filteredProjects.length > 0 ? (
             filteredProjects.map((project) => (
               <article key={project.id} className="project-card" aria-label={project.title}>
