@@ -40,7 +40,7 @@ export function Contact({ onShowToast }) {
   };
 
   return (
-    <section className="section" id="contact">
+    <section className="section" id="contact" aria-label="Direct Contact Channel and Inquiry Form">
       <div className="container">
         {/* Section Header */}
         <div className="section-tag">05 // Direct Channel</div>
