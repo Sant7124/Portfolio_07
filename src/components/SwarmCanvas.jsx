@@ -2,7 +2,7 @@
 // Features: Flocking algorithms, mouse vortex gravity, synaptic connections, shockwave ripples
 import React, { useEffect, useRef } from "react";
 
-export function SwarmCanvas({ isMotionActive }) {
+export function SwarmCanvas({ isMotionActive, activeAccentId = "crimson" }) {
   const canvasRef = useRef(null);
   const mouseRef = useRef({ x: -1000, y: -1000, radius: 140, isHovering: false });
   const shockwavesRef = useRef([]);
@@ -38,7 +38,15 @@ export function SwarmCanvas({ isMotionActive }) {
         this.baseRadius = Math.random() * 2 + 1;
         this.radius = this.baseRadius;
         this.isAccent = Math.random() > 0.65;
-        this.color = this.isAccent ? "227, 43, 60" : "242, 239, 235";
+        const rgbMap = {
+          crimson: "227, 43, 60",
+          cyan: "0, 229, 255",
+          violet: "168, 85, 247",
+          emerald: "16, 185, 129",
+          amber: "245, 158, 11"
+        };
+        const currentAccentRgb = rgbMap[activeAccentId] || "227, 43, 60";
+        this.color = this.isAccent ? currentAccentRgb : "242, 239, 235";
         this.alpha = Math.random() * 0.5 + 0.2;
         this.friction = 0.98;
       }
@@ -109,6 +117,15 @@ export function SwarmCanvas({ isMotionActive }) {
 
     initParticles();
 
+    const rgbMap = {
+      crimson: "227, 43, 60",
+      cyan: "0, 229, 255",
+      violet: "168, 85, 247",
+      emerald: "16, 185, 129",
+      amber: "245, 158, 11"
+    };
+    const activeRgb = rgbMap[activeAccentId] || "227, 43, 60";
+
     // Mouse listeners
     const onMouseMove = (e) => {
       mouseRef.current.x = e.clientX;
@@ -150,7 +167,7 @@ export function SwarmCanvas({ isMotionActive }) {
 
           ctx.beginPath();
           ctx.arc(sw.x, sw.y, sw.radius, 0, Math.PI * 2);
-          ctx.strokeStyle = `rgba(227, 43, 60, ${Math.max(0, sw.opacity * 0.4)})`;
+          ctx.strokeStyle = `rgba(${activeRgb}, ${Math.max(0, sw.opacity * 0.4)})`;
           ctx.lineWidth = 2;
           ctx.stroke();
 
@@ -174,7 +191,7 @@ export function SwarmCanvas({ isMotionActive }) {
               ctx.beginPath();
               ctx.moveTo(particles[i].x, particles[i].y);
               ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.strokeStyle = `rgba(227, 43, 60, ${alpha})`;
+              ctx.strokeStyle = `rgba(${activeRgb}, ${alpha})`;
               ctx.lineWidth = 0.75;
               ctx.stroke();
             }
