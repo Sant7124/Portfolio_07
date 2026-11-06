@@ -125,7 +125,8 @@
   width: 100%;
   height: 2px;
   background: var(--accent);
-  box-shadow: 0 0 8px var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  border-radius: 99px;
 }
 
 .nav-link:focus-visible,
