@@ -88,6 +88,7 @@
   line-height: 0.92;
   color: var(--text);
   margin-bottom: 1.25rem;
+  word-break: break-word;
 }
 
 .hero-title span.accent-text {
