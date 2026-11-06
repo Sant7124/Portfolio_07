@@ -39,17 +39,23 @@ export function ProjectGrid() {
         <div className="projects-header-bar">
           {/* Category Tabs */}
           <div className="filter-tabs-group" role="tablist" aria-label="Filter projects by domain">
-            {projectCategories.map((cat) => (
-              <button
-                key={cat.id}
-                role="tab"
-                aria-selected={activeCategory === cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                className={`filter-tab ${activeCategory === cat.id ? "active" : ""}`}
-              >
-                {cat.label}
-              </button>
-            ))}
+            {projectCategories.map((cat) => {
+              const count = cat.id === "all" 
+                ? projectsData.length 
+                : projectsData.filter(p => p.categoryFilter === cat.id).length;
+              return (
+                <button
+                  key={cat.id}
+                  role="tab"
+                  aria-selected={activeCategory === cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                  className={`filter-tab ${activeCategory === cat.id ? "active" : ""}`}
+                >
+                  <span>{cat.label}</span>
+                  <span style={{ fontSize: "0.7rem", opacity: 0.7, marginLeft: "4px" }}>({count})</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Search Input */}
