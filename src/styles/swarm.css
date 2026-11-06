@@ -11,6 +11,8 @@
   pointer-events: none;
   z-index: 0;
   opacity: 0.65;
+  transform: translateZ(0);
+  will-change: opacity;
   transition: opacity 0.5s ease;
 }
 
