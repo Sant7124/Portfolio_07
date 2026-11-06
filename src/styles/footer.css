@@ -87,3 +87,9 @@
 .back-to-top-btn:hover {
   color: var(--accent);
 }
+
+.back-to-top-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
