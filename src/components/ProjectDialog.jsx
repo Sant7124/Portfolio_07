@@ -27,6 +27,7 @@ export function ProjectDialog({ project, onClose }) {
       role="dialog"
       aria-modal="true"
       aria-labelledby="modal-title"
+      tabIndex={-1}
     >
       <div className="modal-dialog">
         {/* Modal Header */}
