@@ -1,0 +1,347 @@
+/* ==========================================================================
+   PROJECT UI MOCKUPS STYLES
+   Simulated dark tech interfaces for each engineered project
+   ========================================================================== */
+
+.project-mockup-wrapper {
+  background: #0d0d0d;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  margin-bottom: 1.25rem;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06), 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.mockup-window-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 0.85rem;
+  background: #141414;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mockup-dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.mockup-dots .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.mockup-dots .dot.red { background: #ff5f56; }
+.mockup-dots .dot.yellow { background: #ffbd2e; }
+.mockup-dots .dot.green { background: #27c93f; }
+
+.mockup-title-text {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-dim);
+  letter-spacing: 0.5px;
+}
+
+.mockup-status-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.mockup-canvas-area {
+  padding: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  min-height: 120px;
+  justify-content: center;
+}
+
+/* ExplainO: Document & RAG Chat */
+.mockup-explaino .mockup-canvas-area {
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.doc-page-graphic {
+  background: #161616;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.doc-line {
+  height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.doc-line.w-100 { width: 100%; }
+.doc-line.w-90 { width: 90%; }
+.doc-line.w-80 { width: 80%; }
+.doc-line.w-75 { width: 75%; }
+.doc-line.w-60 { width: 60%; }
+
+.doc-line.highlight-rag {
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+}
+
+.doc-chunk-badge {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: var(--accent);
+  background: var(--accent-subtle);
+  border: 1px solid rgba(227, 43, 60, 0.3);
+  padding: 2px 4px;
+  border-radius: 2px;
+  margin-top: 4px;
+  width: fit-content;
+}
+
+.ai-chat-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.chat-bubble {
+  padding: 0.35rem 0.55rem;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  line-height: 1.3;
+}
+
+.chat-bubble.user {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+}
+
+.chat-bubble.ai {
+  background: var(--accent-subtle);
+  border: 1px solid rgba(227, 43, 60, 0.3);
+  color: var(--text);
+}
+
+.bubble-label {
+  font-size: 0.58rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 2px;
+}
+
+/* MetricMind: SQL Prompt & Mini Chart */
+.sql-prompt-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: #151515;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  padding: 0.3rem 0.55rem;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.prompt-prefix { color: var(--accent); font-weight: 700; }
+.prompt-query { color: var(--text-muted); }
+
+.mini-chart-svg {
+  width: 100%;
+  height: 50px;
+}
+
+.metric-kpi-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 0.25rem;
+}
+
+.kpi-pill {
+  display: flex;
+  flex-direction: column;
+}
+
+.kpi-lbl { font-size: 0.6rem; color: var(--text-dim); }
+.kpi-val { font-size: 0.85rem; font-weight: 700; color: var(--text); }
+
+/* DigiFootprint: Threat Meter & Audit Feed */
+.radar-audit-box {
+  display: grid;
+  grid-template-columns: 0.7fr 1.3fr;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.meter-circle {
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  border: 3px solid #ef4444;
+  box-shadow: 0 0 12px rgba(239, 68, 68, 0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.meter-number {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: #ef4444;
+  line-height: 1;
+}
+
+.meter-text {
+  font-size: 0.5rem;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
+
+.threat-feed-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.threat-item {
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  background: #171717;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.threat-status-tag {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  font-weight: 700;
+  color: #ef4444;
+}
+
+.threat-name { font-size: 0.65rem; color: var(--text); }
+.threat-hash { font-family: var(--font-mono); font-size: 0.55rem; color: var(--text-dim); }
+
+/* ShieldVision: Phishing Detection */
+.scanner-badge.phish-alert {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(239, 68, 68, 0.15);
+  border: 1px solid rgba(239, 68, 68, 0.4);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #ef4444;
+}
+
+.alert-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ef4444;
+  box-shadow: 0 0 6px #ef4444;
+  animation: pulseAlert 1.5s infinite;
+}
+
+@keyframes pulseAlert {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+.threat-indicators-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.35rem;
+}
+
+.indicator-chip {
+  background: #151515;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 4px;
+  padding: 0.3rem 0.4rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.ind-label { font-size: 0.55rem; color: var(--text-dim); }
+.ind-val { font-size: 0.62rem; font-weight: 700; }
+.ind-val.danger { color: #ef4444; }
+.ind-val.warning { color: #f59e0b; }
+
+/* Internship Rec: Match Card */
+.match-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.match-role-title { font-size: 0.72rem; font-weight: 700; color: var(--text); }
+.match-badge {
+  font-family: var(--font-mono);
+  font-size: 0.55rem;
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+.affinity-meter-bar {
+  width: 100%;
+  height: 5px;
+  border-radius: 99px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.affinity-meter-bar .meter-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #10b981, #00e5ff);
+  border-radius: 99px;
+}
+
+.skill-gap-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.skill-fit {
+  font-size: 0.62rem;
+  padding: 2px 5px;
+  border-radius: 3px;
+}
+
+.skill-fit.matched {
+  background: rgba(16, 185, 129, 0.12);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.skill-fit.gap {
+  background: rgba(245, 158, 11, 0.12);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
