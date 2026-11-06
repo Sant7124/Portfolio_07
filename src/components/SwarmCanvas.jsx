@@ -1,3 +1,5 @@
+// Interactive Canvas Swarm Engine
+// Features: Flocking algorithms, mouse vortex gravity, synaptic connections, shockwave ripples
 import React, { useEffect, useRef } from "react";
 
 export function SwarmCanvas({ isMotionActive }) {
