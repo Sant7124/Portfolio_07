@@ -49,6 +49,10 @@
   box-shadow: 0 4px 15px rgba(227, 43, 60, 0.4);
 }
 
+.filter-tab.active span {
+  opacity: 1 !important;
+}
+
 /* Search Box */
 .project-search-box {
   position: relative;
