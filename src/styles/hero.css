@@ -290,6 +290,7 @@
 .portrait-inner-card:hover {
   transform: translateY(-4px);
   border-color: rgba(227, 43, 60, 0.5);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.9), 0 0 55px rgba(227, 43, 60, 0.35);
 }
 
 .portrait-img {
