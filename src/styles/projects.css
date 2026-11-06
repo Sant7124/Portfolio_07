@@ -307,6 +307,14 @@
   transform: translateY(0) scale(1);
 }
 
+.modal-dialog::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-dialog::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
 .modal-header {
   padding: 2rem 2rem 1.5rem;
   border-bottom: 1px solid var(--border);
