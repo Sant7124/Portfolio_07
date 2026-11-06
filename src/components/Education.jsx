@@ -5,7 +5,7 @@ import { Award, GraduationCap, Layout, Database, ExternalLink, ArrowRight } from
 
 export function Education() {
   return (
-    <section className="section" id="education">
+    <section className="section" id="education" aria-label="Education, Certifications and Competitive Coding">
       <div className="container">
         {/* Section Header */}
         <div className="section-tag">04 // Chronology & Credentials</div>
