@@ -67,7 +67,7 @@ const iconMap = {
 
 export function Skills() {
   return (
-    <section className="section" id="skills">
+    <section className="section" id="skills" aria-label="Technical Skills and Architectural Expertise">
       <div className="container">
         {/* Section Header */}
         <div className="section-tag">02 // Technical Arsenal</div>
