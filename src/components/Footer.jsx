@@ -11,7 +11,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="site-footer">
+    <footer className="site-footer" role="contentinfo" aria-label="Portfolio Footer and Social Links">
       <div className="container">
         <div className="footer-inner">
           <div className="footer-top">
