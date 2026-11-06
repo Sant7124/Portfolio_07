@@ -1,0 +1,264 @@
+/* ==========================================================================
+   INTERACTIVE DEVELOPER TERMINAL & THEME CUSTOMIZER STYLES
+   ========================================================================== */
+
+/* Floating Terminal Trigger (Bottom Left) */
+.floating-terminal-trigger {
+  position: fixed;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 990;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-full);
+  background: rgba(18, 18, 18, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--border-light);
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  font-weight: 700;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.6);
+  transition: all var(--transition-fast);
+}
+
+.floating-terminal-trigger:hover {
+  background: var(--surface-hover);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), 0 0 20px var(--accent-glow);
+}
+
+/* Terminal Drawer Card */
+.terminal-drawer-card {
+  position: fixed;
+  bottom: 5.5rem;
+  left: 2rem;
+  width: calc(100vw - 4rem);
+  max-width: 540px;
+  height: 380px;
+  background: rgba(13, 13, 13, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 35px rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: slideTerminal 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes slideTerminal {
+  from { opacity: 0; transform: translateY(20px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.terminal-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  background: #181818;
+  border-bottom: 1px solid var(--border);
+}
+
+.terminal-prompt-title {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-dim);
+}
+
+.terminal-close-x {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  border-radius: 4px;
+  transition: all var(--transition-fast);
+}
+
+.terminal-close-x:hover {
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.terminal-output-body {
+  flex: 1;
+  padding: 1rem;
+  overflow-y: auto;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.terminal-output-body::-webkit-scrollbar {
+  width: 4px;
+}
+.terminal-output-body::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+.terminal-line pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: inherit;
+}
+
+.terminal-line.system { color: #10b981; }
+.terminal-line.user { color: var(--accent); font-weight: 700; }
+.terminal-line.output { color: var(--text-muted); }
+.terminal-line.error { color: #ef4444; }
+
+.terminal-input-bar {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.85rem;
+  background: #141414;
+  border-top: 1px solid var(--border);
+  gap: 0.5rem;
+}
+
+.terminal-caret {
+  color: var(--accent);
+  font-family: var(--font-mono);
+  font-weight: 700;
+}
+
+.terminal-text-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  outline: none;
+}
+
+.terminal-submit-btn {
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  transition: color var(--transition-fast);
+}
+
+.terminal-submit-btn:hover {
+  color: var(--accent);
+}
+
+/* ==========================================================================
+   THEME PALETTE DOCK
+   ========================================================================== */
+.theme-customizer-dock {
+  position: relative;
+  display: inline-block;
+}
+
+.theme-dock-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-full);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.theme-dock-trigger:hover,
+.theme-dock-trigger.active {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+  color: var(--text);
+}
+
+.theme-palette-popover {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  background: rgba(18, 18, 18, 0.96);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8), 0 0 25px rgba(0, 0, 0, 0.5);
+  z-index: 200;
+  min-width: 220px;
+  animation: popoverFade 0.2s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes popoverFade {
+  from { opacity: 0; transform: translateY(-8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.popover-header {
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.popover-title {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  letter-spacing: 1px;
+}
+
+.swatches-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.color-swatch-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.4rem 0.6rem;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  transition: all var(--transition-fast);
+  width: 100%;
+}
+
+.color-swatch-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.color-swatch-btn.selected {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.swatch-circle {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px var(--swatch-color);
+}
+
+.swatch-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text);
+}
