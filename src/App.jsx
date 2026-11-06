@@ -8,6 +8,7 @@ import { About } from "./components/About";
 import { Education } from "./components/Education";
 import { Contact } from "./components/Contact";
 import { Footer } from "./components/Footer";
+import { TerminalPlayground } from "./components/TerminalPlayground";
 import { CheckCircle2 } from "lucide-react";
 
 export function App() {
@@ -17,6 +18,7 @@ export function App() {
     return saved !== null ? JSON.parse(saved) : true;
   });
 
+  const [activeAccentId, setActiveAccentId] = useState("crimson");
   const [activeSection, setActiveSection] = useState("home");
   const [toastMessage, setToastMessage] = useState(null);
 
@@ -59,7 +61,7 @@ export function App() {
   return (
     <>
       {/* Interactive Swarm Particle Canvas */}
-      <SwarmCanvas isMotionActive={isMotionActive} />
+      <SwarmCanvas isMotionActive={isMotionActive} activeAccentId={activeAccentId} />
 
       {/* Subtle Ambient Radial Glow Mesh */}
       <div className="ambient-bg" aria-hidden="true" />
@@ -70,6 +72,9 @@ export function App() {
           isMotionActive={isMotionActive}
           setIsMotionActive={setIsMotionActive}
           activeSection={activeSection}
+          activeAccentId={activeAccentId}
+          setActiveAccentId={setActiveAccentId}
+          onShowToast={showToast}
         />
 
         <main>
@@ -82,6 +87,12 @@ export function App() {
         </main>
 
         <Footer />
+
+        {/* Interactive Developer CLI Terminal */}
+        <TerminalPlayground
+          setActiveAccentId={setActiveAccentId}
+          onShowToast={showToast}
+        />
       </div>
 
       {/* Toast Notification */}
@@ -96,4 +107,3 @@ export function App() {
 }
 
 export default App;
-

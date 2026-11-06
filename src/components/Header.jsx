@@ -1,8 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { siteConfig } from "../config/site";
 import { Menu, X, Sparkles, ArrowRight, Download } from "lucide-react";
+import { ThemeCustomizer } from "./ThemeCustomizer";
 
-export function Header({ isMotionActive, setIsMotionActive, activeSection }) {
+export function Header({
+  isMotionActive,
+  setIsMotionActive,
+  activeSection,
+  activeAccentId,
+  setActiveAccentId,
+  onShowToast
+}) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -10,7 +18,7 @@ export function Header({ isMotionActive, setIsMotionActive, activeSection }) {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -66,6 +74,13 @@ export function Header({ isMotionActive, setIsMotionActive, activeSection }) {
 
           {/* Header Action Controls */}
           <div className="header-actions">
+            {/* Theme Accent Switcher */}
+            <ThemeCustomizer
+              activeAccentId={activeAccentId}
+              setActiveAccentId={setActiveAccentId}
+              onShowToast={onShowToast}
+            />
+
             {/* Top Motion Switcher */}
             <button
               onClick={() => setIsMotionActive((prev) => !prev)}
