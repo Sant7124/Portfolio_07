@@ -47,6 +47,25 @@ Inspired by the editorial aesthetics of [touquirakhtar.com](https://touquirakhta
 
 ---
 
+## 🧱 6 Architecture Chunks & Commit Methodology
+
+This codebase was developed through 6 structured chunks, each featuring atomic, meaningful commits adhering to Conventional Commits:
+
+1. **Chunk 1: Foundation, Design Tokens & Asset Pipeline** (Commits 1–15)
+   * Setup of Vite 6 + React 18, Google Fonts (Anton, Manrope, Caveat), dark theme CSS variables, studio portrait, and verified resume document.
+2. **Chunk 2: Interactive Swarm Engine & Navigation** (Commits 16–30)
+   * 60fps canvas particle swarm with mouse vortex gravity, shockwave click ripples, persistent motion switcher, and glassmorphic header.
+3. **Chunk 3: Hero Presentation & Impact Metrics** (Commits 31–45)
+   * Asymmetric hero layout, live availability pill, ambient crimson backlight, floating academic badges, and metrics counter strip.
+4. **Chunk 4: Flagship Projects & Deep-Dive Dialog** (Commits 46–60)
+   * 5 verified projects, interactive dark UI simulation mockups (RAG, BI chart, OSINT meter, phishing alert, ML affinity), category filters, and accessible modal dialog.
+5. **Chunk 5: Technical Arsenal & Editorial Narrative** (Commits 61–75)
+   * 5 skill categories with icon badges, editorial About Me layout, secondary outdoor portrait with Caveat stamp, and quick facts grid.
+6. **Chunk 6: Chronology, Coding Profiles & Final Polish** (Commits 76–90)
+   * Academic timeline, verified certifications, LeetCode/GitHub/HackerRank/GFG brand cards, direct contact channels with one-click copy, and production build verification.
+
+---
+
 ## 🛠️ Tech Stack
 
 - **Framework**: React 18, Vite 6
