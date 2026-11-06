@@ -36,6 +36,12 @@
   max-height: 520px;
   object-fit: cover;
   object-position: center;
+  filter: contrast(1.04) brightness(1.02);
+  transition: transform 0.5s ease;
+}
+
+.about-photo-card:hover .about-photo-img {
+  transform: scale(1.03);
 }
 
 .about-stamp {
